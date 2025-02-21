@@ -143,10 +143,20 @@ function changeDirection(event){
             yVelocity = unitSize;
             break;
         case (keyPressed == KEY_Z):
-            tickSpeed = 250;
+            setInterval(() => {
+                tickSpeed = tickSpeed * 0.99;
+                console.log(tickSpeed);
+            }, 100);
+         
             break;
         case (keyPressed == KEY_X):
             immortal = true;
+            let setTimeoutID = setTimeout(() => {
+                immortal = false;
+                clearTimeout(setTimeoutID);
+                running = immortal;
+            }, 6000);
+            break;
     }
 }
 
